@@ -105,6 +105,10 @@
 				"filter": {
 					"_id": ":paisId"
 				}
+			},
+			{
+				"name": "countries",
+				"collection": "countries"
 			}
 		],
 		"free_zone": {
@@ -227,7 +231,15 @@
 				},
 				{
 					"name": "countries",
-					"type": "page"
+					"type": "page",
+					"components": [
+						{
+							"name": "view",
+							"title": "Paises",
+							"query_name": "countries",
+							"type": "data_view"
+						}
+					]
 				}
 			],
 			"type": "zone"
