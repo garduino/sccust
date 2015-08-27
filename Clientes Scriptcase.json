@@ -239,6 +239,16 @@
 							"query_name": "countries",
 							"type": "data_view"
 						}
+					],
+					"pages": [
+						{
+							"name": "insert",
+							"type": "page"
+						},
+						{
+							"name": "details",
+							"type": "page"
+						}
 					]
 				}
 			],
