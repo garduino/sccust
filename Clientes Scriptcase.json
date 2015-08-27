@@ -109,6 +109,14 @@
 			{
 				"name": "countries",
 				"collection": "countries"
+			},
+			{
+				"name": "countries_empty",
+				"collection": "countries",
+				"find_one": true,
+				"filter": {
+					"_id": null
+				}
 			}
 		],
 		"free_zone": {
@@ -243,11 +251,49 @@
 					"pages": [
 						{
 							"name": "insert",
-							"type": "page"
+							"type": "page",
+							"components": [
+								{
+									"name": "insert_form",
+									"title": "Nuevo País",
+									"query_name": "countries_empty",
+									"mode": "insert",
+									"submit_route": "countries",
+									"cancel_route": "countries",
+									"type": "form"
+								}
+							]
 						},
 						{
 							"name": "details",
-							"type": "page"
+							"type": "page",
+							"components": [
+								{
+									"name": "details_form",
+									"title": "Detalles",
+									"query_name": "countries",
+									"mode": "read_only",
+									"layout": "horizontal",
+									"close_route": "countries",
+									"back_route": "countries",
+									"type": "form"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"type": "page",
+							"components": [
+								{
+									"name": "edit_form",
+									"title": "Editar País",
+									"query_name": "country",
+									"mode": "update",
+									"submit_route": "countries",
+									"cancel_route": "countries",
+									"type": "form"
+								}
+							]
 						}
 					]
 				}
