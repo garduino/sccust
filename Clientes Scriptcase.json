@@ -271,7 +271,7 @@
 								{
 									"name": "details_form",
 									"title": "Detalles",
-									"query_name": "countries",
+									"query_name": "country",
 									"mode": "read_only",
 									"layout": "horizontal",
 									"close_route": "countries",
