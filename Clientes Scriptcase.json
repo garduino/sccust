@@ -245,6 +245,9 @@
 							"name": "view",
 							"title": "Paises",
 							"query_name": "countries",
+							"insert_route": "countries.insert",
+							"details_route": "countries.details",
+							"edit_route": "countries.edit",
 							"type": "data_view"
 						}
 					],
