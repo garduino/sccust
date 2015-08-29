@@ -39,7 +39,9 @@
 						"title": "Pais",
 						"type": "string",
 						"exportable": true,
-						"lookup_query_name": "country"
+						"lookup_query_name": "country",
+						"lookup_key": "pais",
+						"lookup_field": "Pais"
 					},
 					{
 						"name": "observaciones",
