@@ -1,13 +1,13 @@
 {
 	"application": {
 		"title": "Clientes Scriptcase",
-		"theme": "bootswatch-paper",
+		"theme": "bootswatch-cyborg",
 		"collections": [
 			{
 				"name": "customers",
 				"fields": [
 					{
-						"name": "fecha_contacto",
+						"name": "contact_date",
 						"title": "Fecha de Contacto",
 						"type": "date",
 						"required": true,
@@ -15,7 +15,7 @@
 						"input": "datepicker"
 					},
 					{
-						"name": "apenom",
+						"name": "name",
 						"title": "Apellido y Nombres",
 						"type": "string",
 						"required": true,
@@ -29,35 +29,36 @@
 						"exportable": true
 					},
 					{
-						"name": "empresa",
+						"name": "company",
 						"title": "Empresa",
 						"type": "string",
 						"exportable": true
 					},
 					{
-						"name": "pais",
+						"name": "country",
 						"title": "Pais",
 						"type": "string",
 						"exportable": true,
-						"lookup_query_name": "country",
-						"lookup_key": "pais",
-						"lookup_field": "Pais"
+						"lookup_query_name": "countries",
+						"lookup_key": "name",
+						"lookup_field": "name",
+						"input": "select"
 					},
 					{
-						"name": "observaciones",
+						"name": "notes",
 						"title": "Observaciones",
 						"type": "string",
 						"exportable": true,
 						"input": "textarea"
 					},
 					{
-						"name": "cupon",
+						"name": "coupon",
 						"title": "Cupón",
 						"type": "string",
 						"exportable": true
 					},
 					{
-						"name": "comision",
+						"name": "comission",
 						"title": "Comisión",
 						"type": "float",
 						"exportable": true
@@ -70,7 +71,7 @@
 				"type": "collection",
 				"fields": [
 					{
-						"name": "pais",
+						"name": "name",
 						"title": "País",
 						"type": "string",
 						"required": true,
