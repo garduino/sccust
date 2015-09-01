@@ -251,7 +251,19 @@
 							"insert_route": "countries.insert",
 							"details_route": "countries.details",
 							"edit_route": "countries.edit",
-							"type": "data_view"
+							"type": "data_view",
+							"details_route_params": [
+								{
+									"name": "countryId",
+									"value": "this._id"
+								}
+							],
+							"edit_route_params": [
+								{
+									"name": "countryId",
+									"value": "this._id"
+								}
+							]
 						}
 					],
 					"pages": [
