@@ -1,7 +1,7 @@
 {
 	"application": {
 		"title": "Clientes Scriptcase",
-		"theme": "bootswatch-cyborg",
+		"theme": "bootswatch-cosmo",
 		"collections": [
 			{
 				"name": "customers",
@@ -251,19 +251,7 @@
 							"insert_route": "countries.insert",
 							"details_route": "countries.details",
 							"edit_route": "countries.edit",
-							"type": "data_view",
-							"details_route_params": [
-								{
-									"name": "countryId",
-									"value": "this._id"
-								}
-							],
-							"edit_route_params": [
-								{
-									"name": "countryId",
-									"value": "this._id"
-								}
-							]
+							"type": "data_view"
 						}
 					],
 					"pages": [
@@ -296,9 +284,6 @@
 									"back_route": "countries",
 									"type": "form"
 								}
-							],
-							"route_params": [
-								"countryId"
 							]
 						},
 						{
@@ -314,6 +299,9 @@
 									"cancel_route": "countries",
 									"type": "form"
 								}
+							],
+							"route_params": [
+								"countryId"
 							]
 						}
 					]
