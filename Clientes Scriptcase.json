@@ -1,0 +1,321 @@
+{
+	"application": {
+		"title": "Clientes Scriptcase",
+		"theme": "bootswatch-cyborg",
+		"collections": [
+			{
+				"name": "customers",
+				"fields": [
+					{
+						"name": "contact_date",
+						"title": "Fecha de Contacto",
+						"type": "date",
+						"required": true,
+						"exportable": true,
+						"input": "datepicker"
+					},
+					{
+						"name": "name",
+						"title": "Apellido y Nombres",
+						"type": "string",
+						"required": true,
+						"exportable": true
+					},
+					{
+						"name": "email",
+						"title": "E-mail",
+						"type": "string",
+						"required": true,
+						"exportable": true
+					},
+					{
+						"name": "company",
+						"title": "Empresa",
+						"type": "string",
+						"exportable": true
+					},
+					{
+						"name": "country",
+						"title": "Pais",
+						"type": "string",
+						"exportable": true,
+						"lookup_query_name": "countries",
+						"lookup_key": "name",
+						"lookup_field": "name",
+						"input": "select"
+					},
+					{
+						"name": "notes",
+						"title": "Observaciones",
+						"type": "string",
+						"exportable": true,
+						"input": "textarea"
+					},
+					{
+						"name": "coupon",
+						"title": "Cupón",
+						"type": "string",
+						"exportable": true
+					},
+					{
+						"name": "comission",
+						"title": "Comisión",
+						"type": "float",
+						"exportable": true
+					}
+				],
+				"type": "collection"
+			},
+			{
+				"name": "countries",
+				"type": "collection",
+				"fields": [
+					{
+						"name": "name",
+						"title": "País",
+						"type": "string",
+						"required": true,
+						"exportable": true
+					}
+				]
+			}
+		],
+		"queries": [
+			{
+				"name": "customers",
+				"collection": "customers"
+			},
+			{
+				"name": "customers_empty",
+				"collection": "customers",
+				"filter": {
+					"_id": null
+				},
+				"find_one": true
+			},
+			{
+				"name": "customer",
+				"collection": "customers",
+				"filter": {
+					"_id": ":customerId"
+				},
+				"find_one": true
+			},
+			{
+				"name": "country",
+				"collection": "countries",
+				"find_one": true,
+				"filter": {
+					"_id": ":countryId"
+				}
+			},
+			{
+				"name": "countries",
+				"collection": "countries"
+			},
+			{
+				"name": "countries_empty",
+				"collection": "countries",
+				"find_one": true,
+				"filter": {
+					"_id": null
+				}
+			}
+		],
+		"free_zone": {
+			"components": [
+				{
+					"name": "main_menu",
+					"type": "menu",
+					"items": [
+						{
+							"title": "Home page",
+							"route": "home"
+						},
+						{
+							"title": "Customers",
+							"route": "customers"
+						},
+						{
+							"title": "Countries",
+							"route": "countries"
+						}
+					]
+				}
+			],
+			"pages": [
+				{
+					"name": "home",
+					"components": [
+						{
+							"name": "home_jumbotron",
+							"title": "Example application",
+							"type": "jumbotron",
+							"text": "<b>This <a href=\"https://www.meteor.com\" target=\"_blank\">Meteor</a> application is made with <a href=\"http://www.meteorkitchen.com\" target=\"_blank\">meteor-kitchen</a> without manual coding.</b><br />It demonstrates how to use DataView and Form components to create simple database application with view, search, insert, edit and delete functions.<br />Source code (input file for generator) is <a href=\"https://github.com/perak/kitchen-examples/tree/master/example-dataview\" target=\"_blank\">here</a>.",
+							"button_title": "Continue &raquo;",
+							"button_route": "customers"
+						}
+					],
+					"type": "page"
+				},
+				{
+					"name": "customers",
+					"components": [
+						{
+							"name": "view",
+							"type": "data_view",
+							"title": "Customers",
+							"text_if_empty": "No customers :(",
+							"query_name": "customers",
+							"insert_route": "customers.insert",
+							"edit_route": "customers.edit",
+							"edit_route_params": [
+								{
+									"name": "customerId",
+									"value": "this._id"
+								}
+							],
+							"details_route": "customers.details",
+							"details_route_params": [
+								{
+									"name": "customerId",
+									"value": "this._id"
+								}
+							]
+						}
+					],
+					"pages": [
+						{
+							"name": "insert",
+							"components": [
+								{
+									"name": "insert_form",
+									"type": "form",
+									"mode": "insert",
+									"title": "New customer",
+									"query_name": "customers_empty",
+									"submit_route": "customers",
+									"cancel_route": "customers"
+								}
+							],
+							"type": "page"
+						},
+						{
+							"name": "details",
+							"route_params": [
+								"customerId"
+							],
+							"components": [
+								{
+									"name": "details_form",
+									"type": "form",
+									"mode": "read_only",
+									"title": "Details",
+									"layout": "horizontal",
+									"query_name": "customer",
+									"close_route": "customers",
+									"back_route": "customers"
+								}
+							],
+							"type": "page"
+						},
+						{
+							"name": "edit",
+							"route_params": [
+								"customerId"
+							],
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"mode": "update",
+									"title": "Edit customer",
+									"submit_route": "customers",
+									"cancel_route": "customers",
+									"query_name": "customer"
+								}
+							],
+							"type": "page"
+						}
+					],
+					"type": "page"
+				},
+				{
+					"name": "countries",
+					"type": "page",
+					"components": [
+						{
+							"name": "view",
+							"title": "Paises",
+							"query_name": "countries",
+							"insert_route": "countries.insert",
+							"details_route": "countries.details",
+							"edit_route": "countries.edit",
+							"type": "data_view"
+						}
+					],
+					"pages": [
+						{
+							"name": "insert",
+							"type": "page",
+							"components": [
+								{
+									"name": "insert_form",
+									"title": "Nuevo País",
+									"query_name": "countries_empty",
+									"mode": "insert",
+									"submit_route": "countries",
+									"cancel_route": "countries",
+									"type": "form"
+								}
+							]
+						},
+						{
+							"name": "details",
+							"type": "page",
+							"components": [
+								{
+									"name": "details_form",
+									"title": "Detalles",
+									"query_name": "country",
+									"mode": "read_only",
+									"layout": "horizontal",
+									"close_route": "countries",
+									"back_route": "countries",
+									"type": "form"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"type": "page",
+							"components": [
+								{
+									"name": "edit_form",
+									"title": "Editar País",
+									"query_name": "country",
+									"mode": "update",
+									"submit_route": "countries",
+									"cancel_route": "countries",
+									"type": "form"
+								}
+							]
+						}
+					]
+				}
+			],
+			"type": "zone"
+		},
+		"meta_description": "Clientes Scriptcase",
+		"meta_title": "Cientes Scriptcase",
+		"footer_text": "Copyright Arduino Software 2015",
+		"public_zone": {
+			"type": "zone"
+		},
+		"private_zone": {
+			"type": "zone"
+		},
+		"send_verification_email": true,
+		"packages": {}
+	}
+}
