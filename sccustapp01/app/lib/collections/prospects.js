@@ -33,20 +33,20 @@ Prospects.attachSchema(new SimpleSchema({
     label: "Country",
     allowedValues: ['Argentina', 'México'],
   },
-  bodystyle: {
+  license: {
     type: String,
-    label: "Body Style",
-    allowedValues: ['Convertibles', 'Coupes', 'Hatchbacks', 'Vans', 'Sedans', 'Suvs', 'Trucks', 'Wagons'],
+    label: "License Type",
+    allowedValues: ['Enterprise', 'Single User', 'Unlimited'],
     optional: true
   },
-  topspeed: {
-    type: Number,
-    label: "Top Speed (mph)",
+  company: {
+    type: String,
+    label: "Company",
     optional: true
   },
-  power: {
+  order: {
     type: Number,
-    label: "Power (HP)",
+    label: "Order",
     optional: true
   }
 }));
