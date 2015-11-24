@@ -1,4 +1,4 @@
-CarsController = RouteController.extend({
+prospectsController = RouteController.extend({
   subscriptions: function () {
     this.subscribe('prospects');
   },
